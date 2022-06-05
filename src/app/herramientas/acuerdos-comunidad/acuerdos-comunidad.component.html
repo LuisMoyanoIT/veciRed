@@ -1,0 +1,10 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col  size="12" size-lg="4" size-md="6" size-sm="12" size-xs="12"
+              *ngFor="let acuerdoPublicado of acuerdosComunidad">
+      <app-acuerdo-publicado [acuerdoPublicado]="acuerdoPublicado"></app-acuerdo-publicado>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+

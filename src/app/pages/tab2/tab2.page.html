@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" color="light"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center" color="light">
+      VeciRed
+    </ion-title>
+    
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    
+     <!-- TITULO -->
+    <div class="titulo"><h4 class="ion-text-center"><b>NOTIFICACIONES</b></h4></div>
+
+    <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <!-- Notificaciones vacio-->
+    <ion-grid  *ngIf="emptyNotificaciones" >
+      <ion-card class=" ion-text-center sinNotificaciones">
+      <img class="sinNotificacionesImagen"src="/../../assets/noComunity.png"> 
+      <h3 class="sinNotificacionesTitulo"><b>No sé registrado actividad en la comunidad</b></h3>
+      </ion-card>
+    </ion-grid>
+
+    <ion-item *ngFor="let push of mensajes">
+      <ion-label>
+        <h3>{{push.title}}</h3>
+        <p>{{push.body}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Scroll infinito -->
+  <ion-infinite-scroll    [disabled]="deshabilitar"
+                          threshold="100px" 
+                          (ionInfinite)="scroll($event)">
+      <ion-infinite-scroll-content>
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

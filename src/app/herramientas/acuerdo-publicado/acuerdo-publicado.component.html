@@ -1,0 +1,71 @@
+<ion-card  class="acuerdo">
+  <ion-grid fixed>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines="none" class="item-background-color">
+      
+          <ion-avatar slot="start">
+            <img src="/assets/avatars/{{acuerdoPublicado.usuario.imagenPerfil}}" />
+          </ion-avatar>
+      
+          <ion-label>
+            <h3><b>{{acuerdoPublicado.comunidad.nombreComunidad}}</b></h3>
+          </ion-label>
+      
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-card-content class="fontColor">
+      <ion-row>
+    
+        <ion-col size="11">
+          <!-- TITULO -->
+          <ion-card-title class="titulo">{{acuerdoPublicado.titulo}}</ion-card-title>
+          <!-- DESCRIPCIÓN -->
+          <div class="ion-text-center">{{acuerdoPublicado.descripcion}}</div>
+          <!-- IMAGEN -->
+          <img *ngIf="acuerdoPublicado.imagenAcuerdo.length > 0" class="formatoImagen" src="{{acuerdoPublicado.imagenAcuerdo[0] | imagenAcuerdo: acuerdoPublicado.usuario._id }}" >
+        </ion-col>
+        <ion-col size="1">
+  
+          <ion-buttons class="botones" >
+            <ion-button shape="round" class="lanzarVotacion" (click)="lanzarVotacion()" [disabled]="!ocultar">
+              <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+            </ion-button>  
+          </ion-buttons>
+
+          <ion-buttons class="botones">
+            <ion-button shape="round" (click)="abrirEditar()" [disabled]="!ocultar">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>  
+          </ion-buttons>
+
+          <ion-buttons class="botones" [hidden]="!ocultar">
+            <ion-button shape="round" class="eliminar" (click)="eliminar()">
+              <ion-icon name="trash-bin-outline"></ion-icon>
+            </ion-button>          
+          </ion-buttons>
+          <ion-buttons class="botones" [hidden]="ocultar">
+            <ion-button shape="round" class="terminar" (click)="terminar()">
+              <ion-icon name="hourglass-outline"></ion-icon>
+            </ion-button>          
+          </ion-buttons>
+  
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col size="12">
+        <label class="fechaBorde">
+          {{fechaFormateada}} | {{acuerdoPublicado.hora}}
+        </label>
+        <!-- <label class="fechaBorde" [hidden]="ocultar">
+          <app-cuenta-regresiva [votacionLanzada]="acuerdoPublicado"></app-cuenta-regresiva>
+        </label> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

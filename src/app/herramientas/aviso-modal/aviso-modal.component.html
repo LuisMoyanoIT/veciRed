@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons  
+                  (click)="closeModal()"
+                  slot="start">
+                  <ion-icon slot="icon-only" name="arrow-back-outline" color="light"></ion-icon>
+
+      
+
+    </ion-buttons>
+    <ion-title  class="ion-text-center" color="light">VeciRed</ion-title>
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--Aviso normal-->
+  <ion-card style="background-color: rgba(91, 240, 4, 0.250);">
+    <ion-card-header>
+      <ion-card-subtitle class=" fontColor ion-text-center">Tipos de avisos</ion-card-subtitle>
+      <ion-card-title class="ion-text-center"><b>Otro</b></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content class="fontColor">
+      Se considera cualquier aviso que contenga información útil, mas es prescindible y no es de 
+      carácter urgente, los vecinos lo podrían leer durante el día sin apuro.
+    </ion-card-content>
+  </ion-card>
+
+  <!--Aviso Informativo-->
+  <ion-card style="background-color: rgba(44, 117, 212, 0.250);">
+    <ion-card-header>
+      <ion-card-subtitle class="fontColor ion-text-center">Tipos de avisos</ion-card-subtitle>
+      <ion-card-title class="ion-text-center"><b>Informativo</b></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content class="fontColor">
+      Se considera cualquier aviso que contenga información entregada por la directiva de su jjvv o 
+      agrupación vecinal. Es importante que todos los vecinos lo lean eventualmente.
+    </ion-card-content>
+  </ion-card>
+
+  <!--Aviso problema-->
+  <ion-card style="background-color: rgba(230, 245, 27, 0.250);">
+    <ion-card-header>
+      <ion-card-subtitle class=" fontColor ion-text-center">Tipos de avisos</ion-card-subtitle>
+      <ion-card-title class="ion-text-center"><b>Problema</b></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content class="fontColor" >
+      Se considera cualquier aviso que contenga información relacionada a algún problema que le 
+      suceda a algún vecino o esté sucediendo en su zona. Es importante resolverlo lo antes posible,
+      no obstante nadie se encuentra en riesgo vital.
+    </ion-card-content>
+  </ion-card>
+
+  <!--Aviso Emergencia-->
+  <ion-card style="background-color: rgba(240, 20, 20, 0.300);">
+    <ion-card-header>
+      <ion-card-subtitle class="fontColor ion-text-center">Tipos de avisos</ion-card-subtitle>
+      <ion-card-title class="ion-text-center"><b>Emergencia</b></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content class="fontColor">
+      Se considera un aviso especial, el cual solo esta diseñado para informar una situación grave
+      que requiere el apoyo inmedianto de quienes lo lean. Solo debería ocuparse cuando sea realmente
+      necesario.
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

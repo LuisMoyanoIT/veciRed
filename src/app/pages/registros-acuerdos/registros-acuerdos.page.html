@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/votaciones" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Titulo -->
+  <div class="titulo"><h4 class="ion-text-center"><b>ACUERDOS ANTERIORES</b></h4></div>
+
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!--Acuerdos terminados-->
+  <ion-grid  *ngIf="emptyAcuerdos" >
+    <ion-card class=" ion-text-center sinAcuerdos">
+    <img class="sinAcuerdosImagen"src="/../../assets/noComunity.png"> 
+    <h3 class="sinAcuerdosTitulo"><b>No se han registrado acuerdos</b></h3>
+    </ion-card>
+  </ion-grid>
+
+
+  <!-- Graficos -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col  size="12" size-lg="4" size-md="6" size-sm="12" size-xs="12"
+                *ngFor="let graficoVotacion of acuerdos">
+        <app-grafico [graficoVotacion]="graficoVotacion"></app-grafico>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+  <!-- Scroll infinito -->
+  <ion-infinite-scroll    [disabled]="deshabilitar"
+                          threshold="100px" 
+                          (ionInfinite)="scroll($event)">
+      <ion-infinite-scroll-content>
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

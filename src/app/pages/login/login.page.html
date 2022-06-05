@@ -1,0 +1,70 @@
+<ion-content class="ion-text-center">
+
+   <!-- Logo -->
+   <ion-row>
+    <ion-col>
+      <h4>
+        <ion-text color="light">
+          VeciRed
+        </ion-text>
+      </h4>
+      <div>
+        <img src="/assets/icon/VeciRed.png">
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <form (ngSubmit)="login()" #logearse="ngForm">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col>
+
+          <ion-list class="bg-transparent">
+
+            <ion-item color="none">
+              <ion-label position="floating" color="light" class="my-label">
+                <ion-icon name="mail" item-start></ion-icon>
+                Correo Electronico
+              </ion-label>
+              <ion-input name="correo" type="email" [(ngModel)]="User.email" color="light" required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item color="none">
+              <ion-label position="floating" color="light" class="my-label">
+                <ion-icon name="lock-closed" item-start></ion-icon>
+                Contraseña
+              </ion-label>
+              <ion-input name="pass" type="password" [(ngModel)]="User.password" color="light" required>
+              </ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <p>
+        <ion-text color="light">
+          <strong>Olvido su contraseña?</strong>
+        </ion-text>
+      </p>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="tertiary" shape="round">
+            Ingresar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+
+  <p (click)="registrarse()">
+    <ion-text color="light">
+      <strong>Registrarse</strong>
+    </ion-text>
+  </p>
+
+</ion-content>
+

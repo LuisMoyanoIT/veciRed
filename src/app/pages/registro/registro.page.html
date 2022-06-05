@@ -1,0 +1,101 @@
+<ion-content class="ion-text-center">
+
+  <!-- Logo -->
+  <ion-row>
+   <ion-col>
+     <h4>
+       <ion-text color="light">
+         VeciRed
+       </ion-text>
+     </h4>
+     <div>
+       <img src="/assets/icon/VeciRed.png">
+     </div>
+   </ion-col>
+ </ion-row>
+
+ <form (ngSubmit)="registro()" #registrarse="ngForm">
+   <ion-grid fixed>
+     <ion-row>
+       <ion-col>
+
+         <ion-list class="bg-transparent">
+
+          <ion-item color="none">
+            <ion-label position="floating" color="light" class="my-label">
+              <ion-icon name="person" item-start></ion-icon>
+              Nombre
+            </ion-label>
+            <ion-input name="nombre" type="text" minlength="3" maxlength="50" [(ngModel)]="userRegistro.nombre" color="light" required>
+            </ion-input>
+          </ion-item>
+          <span class="caracteres">{{ 50 - userRegistro.nombre.length }} caracteres restantes</span> 
+
+          <ion-item color="none">
+            <ion-label position="floating" color="light" class="my-label">
+              <ion-icon name="calendar" item-start></ion-icon>
+              Fecha Nacimiento
+            </ion-label>
+            <ion-datetime 
+                      display-format="DD MMMM YYYY" 
+                      name="fechaNacimiento"
+                      picker-format="DD MMMM YYYY"
+                      month-names="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"
+                      [max]="maxTime"
+                      [(ngModel)]="userRegistro.fechaNacimiento"
+                      doneText="Aceptar"
+                      cancelText="Cancelar" required>
+            </ion-datetime>
+          </ion-item>
+
+          <ion-item color="none">
+             <ion-label position="floating" color="light" class="my-label">
+               <ion-icon name="mail" item-start></ion-icon>
+               Correo Electrónico
+             </ion-label>
+             <ion-input name="email" type="email" maxlength="150" [(ngModel)]="userRegistro.email" color="light" color="light" required>
+             </ion-input>
+          </ion-item>
+          <span class="caracteres">{{ 150 - userRegistro.email.length }} caracteres restantes</span> 
+
+          <ion-item color="none">
+             <ion-label position="floating" color="light" class="my-label">
+               <ion-icon name="lock-closed" item-start></ion-icon>
+               Contraseña
+             </ion-label>
+             <ion-input name="password" type="password" maxlength="100" [(ngModel)]="userRegistro.password" color="light" required>
+             </ion-input>
+          </ion-item>
+          <span class="caracteres">{{ 100 - userRegistro.password.length }} caracteres restantes</span>
+
+          <ion-item color="none">
+            <ion-label position="floating" color="light" class="my-label">
+              <ion-icon name="lock-closed" item-start></ion-icon>
+              Repita Contraseña
+            </ion-label>
+            <ion-input name="repitePass" type="password" maxlength="100" [(ngModel)]="repitaPassword" color="light" required>
+            </ion-input>
+          </ion-item>
+          <span class="caracteres">{{ 100 - repitaPassword.length }} caracteres restantes</span>
+
+         </ion-list>
+       </ion-col>
+     </ion-row>
+     
+     <ion-row>
+       <ion-col>
+         <ion-button type="submit" color="tertiary" shape="round" class="my-button">
+           Registrarse
+         </ion-button>
+       </ion-col>
+     </ion-row>
+
+   </ion-grid>
+ </form>
+
+  <p (click)="login()">
+    <ion-text color="light">
+      <strong>Ya tengo cuenta</strong>
+    </ion-text>
+  </p>
+</ion-content>

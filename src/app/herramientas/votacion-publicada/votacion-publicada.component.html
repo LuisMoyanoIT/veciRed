@@ -1,0 +1,56 @@
+<ion-card  class="acuerdo">
+  <ion-grid fixed>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines="none" class="item-background-color">
+      
+          <ion-avatar slot="start">
+            <img src="/assets/avatars/{{votacionPublicada.usuario.imagenPerfil}}" />
+          </ion-avatar>
+      
+          <ion-label>
+            <h3><b>{{votacionPublicada.comunidad.nombreComunidad}}</b></h3>
+          </ion-label>
+      
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-card-content class="fontColor">
+      <ion-row>
+    
+        <ion-col size="12">
+          <!-- TITULO -->
+          <ion-card-title class="titulo">{{votacionPublicada.titulo}}</ion-card-title>
+          <!-- DESCRIPCIÓN -->
+          <div class="ion-text-center">{{votacionPublicada.descripcion}}</div>
+          <!-- <div>
+           <ion-label>
+            {{votacionPublicada.descripcion}}
+           </ion-label>
+         </div> -->
+
+         <img *ngIf="votacionPublicada.imagenAcuerdo.length > 0" class="formatoImagen" src="{{votacionPublicada.imagenAcuerdo | mostrarImagen: votacionPublicada.usuario._id }}" >
+          <!-- <img src="/assets/descarga.jpg"> -->
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col size="9" class="itemsCenter">
+        <label class="fechaBorde">
+          {{fechaFormateada}} | {{votacionPublicada.hora}}
+        </label>
+    </ion-col>
+      <ion-col size="3">
+        <ion-button  color="tertiary" 
+                     expand="full"
+                     style="margin-right: 10%;"
+                     (click)="abrirVotacion()">
+          Votar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

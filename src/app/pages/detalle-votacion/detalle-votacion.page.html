@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/votaciones" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- TITULO -->
+  <div class="titulo"><h4 class="ion-text-center"><b>VOTACIÓN</b></h4></div>
+  
+
+  <app-grafico [graficoVotacion]="votacion" [hidden]="ocultar"></app-grafico>
+
+  <ion-card  class="acuerdo" [hidden]="!ocultar">
+
+    <ion-card-content>
+      <ion-list style="background-color: #f4f5f8;" *ngFor="let opcion of votacion.opciones | keyvalue; let i=index;">
+
+        <ion-item [color]="buttonValue == i ? 'secondary' : 'light'" (click)="buttonValue = i">
+          <ion-label class="ion-text-center"><b>{{opcion.value['titulo']}}</b></ion-label>
+        </ion-item>
+
+      </ion-list>
+         
+    </ion-card-content>
+  </ion-card>
+  <app-cuenta-regresiva [votacionLanzada]="votacion"></app-cuenta-regresiva>
+  <ion-row>
+   
+    <ion-col size="6">
+      <ion-button  color="tertiary"
+                   expand="full"
+                   shape="round"
+                   (click)="mostrarInfo()">
+        Info
+      </ion-button>
+    </ion-col>
+
+    <ion-col size="6">
+      <ion-button  color="tertiary"
+                   expand="full"
+                   shape="round"
+                   (click)="votar(buttonValue)"
+                   [disabled]="buttonValue == -1">
+        Votar
+      </ion-button>
+    </ion-col>
+      
+  </ion-row>
+
+</ion-content>

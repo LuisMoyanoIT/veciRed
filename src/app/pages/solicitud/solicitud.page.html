@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab1" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--INICIO TITULO-->
+  <ion-grid>
+    <div class="ripple-parent">
+      <ion-row>    
+        <ion-col  class="avisosTitlte ion-text-center">
+          <b>MIS SOLICITUDES</b>
+        </ion-col>
+      </ion-row>     
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-grid>
+  <!--FIN TITULO-->
+
+  <!---Refrescar nuestra pagina con ion refresher-->
+  <ion-refresher slot="fixed" (ionRefresh)="refresher($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <!--INICIO EMTPY SOLICITUD-->
+  <ion-grid  *ngIf="emptySolicitud" >
+    <ion-card class=" ion-text-center noAvisos">
+    <img class="noAvisosImage"src="/../../assets/noComunity.png"> 
+    <h3 class="noAvisosTitle"><b>No existen solicitudes en tu comunidad</b></h3>
+    </ion-card>
+  </ion-grid>
+  <!--INICIO EMTPY SOLICITUD-->
+
+
+  <!--INICIO LISTA DE SOLICITUDES-->
+  <ion-row>
+    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+             *ngFor="let solicitud of solicitudes"
+    >
+    <ion-card class="avisoUnitario">
+      <ion-card-header >
+      <ion-card-subtitle  class=" fontColor ion-text-center">
+        <ion-icon name="body"></ion-icon>
+        {{solicitud.comunidad.nombreComunidad}}
+      </ion-card-subtitle>
+      <ion-card-title class="ion-text-center">
+        <b>{{solicitud.usuario.nombre}}</b>
+      </ion-card-title>
+      <ion-card-content class="fontColor ion-text-center">
+        <ion-icon name="chatbubble-ellipses-outline" ></ion-icon>
+        {{solicitud.mensaje}}
+        <ion-row>
+          <ion-col>
+              <ion-button  
+                           class="aceptarVecino"
+                           id="aceptarVe"
+                           color="success"
+                           size="small"
+                           style="width: 84%;"
+                           (click)="aceptarVecino(solicitud.comunidad._id, solicitud.usuario._id, solicitud._id)"
+              >               
+               aceptar
+              </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button    class="rechazarVecino"
+                           color="danger"
+                           size="small"
+                           (click)="rechazoVecino(solicitud._id)"
+              >               
+               rechazar
+              </ion-button>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-card-content>
+
+      </ion-card-header>
+      
+    </ion-card>
+
+    </ion-col>
+  </ion-row>
+  <!--FIN LISTA DE SOLICITUDES-->
+
+</ion-content>

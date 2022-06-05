@@ -1,0 +1,31 @@
+.fondo{
+
+    background-color: #f4f5f8;
+}
+
+.sinVotos{
+    background-color: #AFEEEE;
+    border: 2px #241816 solid;
+    border-bottom-left-radius: 9%;
+    border-bottom-right-radius: 9%;
+    border-top-left-radius:9%;
+    border-top-right-radius:9%;
+    //box-shadow: 0 0 2em rgba(30, 30, 31, 0.932);
+}
+
+
+.sinVotosTitle{
+    
+    color: black; 
+    
+    text-align: center;
+    font-family: monospace;
+}
+
+
+.sinVotosImage{
+    //margin-left:30%;
+     width: 40%;
+     height: 50%;
+     max-height: 70%;
+}

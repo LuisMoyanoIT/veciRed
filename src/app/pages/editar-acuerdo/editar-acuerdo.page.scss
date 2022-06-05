@@ -1,0 +1,24 @@
+.titulo
+{
+    margin-top: -3%;
+    //background-color: yellow;
+    font-family: monospace;
+}
+
+.caracteres{
+    font-size:small;
+    margin-left: 55%;
+   
+    color: grey;
+}
+
+.formatoImagen
+{
+    width: 100%;
+    height: 250px;
+    //border: 2px #241816 solid;  
+}
+
+.cabecera{
+    --background: linear-gradient(135deg, #110A3B, #2f32a0);
+}

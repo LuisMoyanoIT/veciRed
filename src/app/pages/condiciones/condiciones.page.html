@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab3" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!--INICIO TITULO-->
+ <ion-grid>
+  <div class="ripple-parent">
+    <ion-row>    
+      <ion-col  class="avisosTitlte ion-text-center">
+        <b>CONDICIONES DE USO</b>
+      </ion-col>
+    </ion-row>     
+    <ion-ripple-effect></ion-ripple-effect>
+  </div>
+</ion-grid>
+<!--FIN TITULO-->
+<!---INICIO CONDICIONES DE USO-->
+<ion-grid class="conditions">
+  <ion-card class="avisoUnitario" >
+    <ul >
+      <li>
+        La aplicación móvil no comprobará si el contenido de las imagenes
+        subidas es adecuado.
+      </li>
+    </ul>
+  </ion-card>
+
+  <ion-card style="margin-top: 6vw;" class="avisoUnitario">
+    <ul>
+      <li>
+        La aplicación móvil no comprobará si el contenido de los comentarios
+        subidos es adecuado.
+      </li>
+    </ul>
+  </ion-card>
+
+  <ion-card style="margin-top: 6vw; margin-bottom: 5vw;" class="avisoUnitario">
+    <ul>
+      <li >
+          Usted podría ser desvinculado de su comunidad al tener conductas poco apropiadas.
+      </li>
+    </ul>
+  </ion-card>
+  <div class="ion-text-center">
+    <img src="/assets/icon/VeciRed.png">
+    <h3>¡Tus amigos de VeciRed!</h3>
+  </div>
+
+  
+  
+  
+
+</ion-grid>
+<!---FIN CONDICIONES DE USO-->
+</ion-content>

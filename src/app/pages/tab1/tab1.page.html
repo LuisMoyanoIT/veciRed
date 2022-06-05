@@ -1,0 +1,98 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" color="light"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center" color="light">
+      VeciRed
+    </ion-title>
+    
+    <!-- <ion-buttons  
+                  disabled="disabledCrear"
+                  slot="end"
+                  (click)="NavegarCrearAviso()"
+                  >
+      <ion-icon slot="icon-only" name="add-outline" ></ion-icon>
+    </ion-buttons> -->
+    <ion-buttons size="large" fill="clear" slot="end" >
+    <ion-button [disabled]="disabledCrear"
+                  (click)="NavegarCrearAviso()"
+                  color="light"
+                  
+                  
+      >
+      <ion-icon slot="icon-only" name="add-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+  
+</ion-header>
+
+<ion-content class="avisosContenedor"[fullscreen]="true">
+  
+  <ion-select #sectionSelect style="display: none !important;" 
+   [(ngModel)]="Idcomunidad"
+   (ionChange) = "actualizarToken()"
+  >
+
+        <ion-select-option *ngFor="let comunidad of Comunidad" [value]="comunidad._id" >
+          {{comunidad.nombreComunidad}}
+        </ion-select-option>
+  
+  </ion-select>
+  <ion-grid>
+    <div class="ripple-parent">
+
+      <ion-row>
+        <ion-col>
+
+        </ion-col>    
+        <ion-col  class="avisosTitlte ion-text-center">
+          <b>AVISOS</b>
+        </ion-col>
+        <ion-col >
+          <ion-buttons  class="cambiarComunidad"
+                  (click)="mostrarSelect()"
+                  >      
+                  <ion-icon slot="icon-only" name="people"></ion-icon>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>     
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+        <!-- <h4 class=""><b>AVISOS</b></h4> -->
+  </ion-grid>
+   <!---Refrescar nuestra pagina con ion refresher-->
+   <ion-refresher slot="fixed" (ionRefresh)="refresher($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!--Agregamos avisos para mostrar aca los avisos publicados-->
+  <ion-card class="noAvisos"  *ngIf="emptyAvisos">
+    <h3 class="noAvisosTitle"><b>Aún no hay avisos en tu comunidad</b></h3>
+    <img class="noAvisosImage"src="/../../assets/sadHouse.png">
+    <h3 class="noAvisosTitle"><b>¡Crea el primero!</b></h3>
+    
+  </ion-card>
+  <app-avisos 
+             [avisos]='avisos'>
+  </app-avisos>
+
+
+  <ion-infinite-scroll [disabled]="!infiniteScroll"
+                       threshold="100px" 
+                       (ionInfinite)="paginaSiguiente($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+
+  
+
+
+  
+</ion-content>

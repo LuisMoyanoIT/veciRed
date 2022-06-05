@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab1" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-center" color="light">VeciRed</ion-title>
+    <ion-buttons  
+                  (click)="openModal()"
+                  slot="end"
+                  color="light">
+                  <ion-icon slot="icon-only" name="help-circle-outline" color="light"></ion-icon>
+
+      
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!--INICIO TITULO-->
+  <ion-grid>
+    <div class="ripple-parent">
+      <ion-row>    
+        <ion-col  class="avisosTitlte ion-text-center">
+          <b>CREAR AVISO</b>
+        </ion-col>
+      </ion-row>     
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-grid>
+  <!--FIN TITULO-->
+  <!--INICIO FORM-->
+  <ion-grid>
+  <ion-list >
+    <!---INICIO TITULO-->
+    <ion-item>
+      <ion-label position="floating"><b>Título:</b></ion-label>
+      <ion-input type="text" minlength="3" maxlength="30" [(ngModel)]="aviso.titulo" required ></ion-input>
+    </ion-item>
+    <span class="caracteres">{{ 30 - aviso.titulo.length }} caracteres restantes</span> 
+    
+    <!---FIN TITULO-->
+
+    <!---INICIO DESCRIPCION-->
+    <ion-item>
+      <ion-label position="floating"><b>Descripción:</b></ion-label>
+      <ion-textarea type="text" minlength="3" maxlength="250" [(ngModel)]="aviso.descripcion"  required ></ion-textarea>
+      
+    </ion-item>
+    <span class="caracteres">{{ 250 - aviso.descripcion.length }} caracteres restantes</span> 
+    <!---FIN DESCRIPCION-->
+
+    <!---INICIO TIPO AVISO-->
+    <!--Miembros directiva-->
+    <ion-item *ngIf="rol == 1" >
+      
+      <ion-label><b>Tipo aviso:</b></ion-label>
+      <ion-select placeholder="Seleccione"
+                  [(ngModel)]="aviso.tipoAviso">
+        <ion-select-option value="1">Emergencia</ion-select-option>
+        <ion-select-option value="3">Información</ion-select-option>
+        <ion-select-option value="4">Otro</ion-select-option>
+        <ion-select-option value="5">Problema</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!--Miembro normal-->
+    <ion-item *ngIf="rol == 2">
+      
+      <ion-label><b>Tipo aviso:</b></ion-label>
+      <ion-select placeholder="Seleccione"
+                  [(ngModel)]="aviso.tipoAviso">
+        <ion-select-option value="1">Emergencia</ion-select-option>
+        <ion-select-option value="4">Otro</ion-select-option>
+        <ion-select-option value="5">Problema</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!---FIN TIPO AVISO-->
+
+    <!---INICIO IMAGEN-->
+    <ion-item>
+      <ion-row style="width: 100%; margin-top:3%;">
+        <ion-col size="6" >
+          <ion-label style="margin-top:4.5%;"><b>Imagen:</b></ion-label>
+
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="full"
+                  shape="round"
+                  style="margin-bottom: 9%;"
+                  (click)="getImagen()"
+                  >
+        <ion-icon slot="start" name="images"></ion-icon>
+        Galería
+      </ion-button>
+
+        </ion-col>
+      </ion-row>
+      
+      
+    </ion-item>
+    <!---FIN IMAGEN-->
+
+    <!---INICIO IMAGEN OBTENIDA -->
+    <ion-grid *ngIf="imagenCarrete">
+      
+          <ion-card >
+          <img class="formatoImagen" [src]="imagenCarrete">
+          </ion-card>
+      
+    </ion-grid>
+
+    <!---FIN IMAGEN OBTENIDA -->
+    
+      <ion-button  class="crearAviso"
+                   color="tertiary" 
+                   shape="round" 
+                   expand="full"
+                   (click)="crearAviso()"
+                   style="margin-top: 30%;"
+                   [disabled]="aviso.titulo.length <= 2 ||
+                               aviso.descripcion.length <= 2 ||
+                               aviso.tipoAviso == 0"
+                   >
+        Publicar
+      </ion-button>
+    
+     
+  </ion-list>
+</ion-grid>
+
+  <!--FIN FORM   -->
+
+
+
+  
+
+</ion-content>
+
+
+
+
+<!-- <ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button routerLink="/main/tabs/tab1">
+      <ion-icon name="home"></ion-icon>
+      
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/main/tabs/tab2">
+      <ion-icon name="notifications"></ion-icon>
+      
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/main/tabs/tab3">
+      <ion-icon name="cart"></ion-icon>
+      
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>   -->

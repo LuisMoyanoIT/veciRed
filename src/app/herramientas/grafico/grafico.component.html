@@ -1,0 +1,17 @@
+<ion-card class="fondo">
+  <ion-card-header>
+    {{graficoVotacion.titulo}}
+  </ion-card-header>
+  <ion-card-content>
+
+    <canvas #doughnutCanvas [hidden]="sinVotos"></canvas>
+
+    <!--INICIO EMTPY SOLICITUD-->
+    <ion-grid  [hidden]="!sinVotos" >
+      <ion-card class=" ion-text-center sinVotos">
+      <img class="sinVotosImage"src="/../../assets/noComunity.png"> 
+      <h3 class="sinVotosTitle"><b>No se registraron votos para el acuerdo.</b></h3>
+      </ion-card>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

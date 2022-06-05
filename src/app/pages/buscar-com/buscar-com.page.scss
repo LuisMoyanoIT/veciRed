@@ -1,0 +1,57 @@
+.avisoUnitario{
+    //border: 1px #241816 solid;
+    //border-radius: 5%;
+    // border-bottom-left-radius: 3%;
+    // border-bottom-right-radius: 3%;
+    // border-top-left-radius:3%;
+    // border-top-right-radius:3%;
+    box-shadow: 0 0 2em rgba(30, 30, 31, 0.932);
+    //max-height: 95%;
+    background-color: #AFEEEE;
+    
+    
+}
+
+
+.fontColor
+{
+    color:black;
+}
+
+.noComunidad
+{
+    background-color: #AFEEEE;
+    border: 1px #241816 solid;
+    border-bottom-left-radius: 9%;
+    border-bottom-right-radius: 9%;
+    border-top-left-radius:9%;
+    border-top-right-radius:9%;
+}
+
+.noAvisosImage{
+    //margin-left:30%;
+     width: 40%;
+     height: 50%;
+     max-height: 70%;
+}
+
+.noAvisosTitle{
+    
+    color: black; 
+    
+    text-align: center;
+    font-family: monospace;
+    //font-size: medium;
+}
+
+.cabecera{
+    --background: linear-gradient(135deg, #110A3B, #2f32a0);
+}
+
+.caracteres{
+    font-size:small;
+    //margin-left: 51%;
+    //text-align: right;
+    margin-left: auto;
+    color: grey;
+}

@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-button (click)="volverAtras()">
+        <ion-icon name="arrow-back-outline" color="light"></ion-icon>
+      </ion-button>
+     <!--  <ion-back-button defaultHref="/main/tabs/acuerdos"></ion-back-button> -->
+    </ion-buttons>
+
+    <ion-title class="ion-text-center" color="light">
+      VeciRed
+    </ion-title>
+
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- TITULO -->
+  <div class="titulo"><h4 class="ion-text-center"><b>EDITAR ACUERDO</b></h4></div>
+
+  <ion-list>
+    <!-- ACUERDO TITULO -->
+    <ion-item>
+      <ion-label position="floating"><b>Título:</b></ion-label>
+      <ion-input type="text" minlength="3" maxlength="30" [(ngModel)]="acuerdo.titulo" required></ion-input>
+    </ion-item>
+    <span class="caracteres">{{ 30 - acuerdo.titulo.length }} caracteres restantes</span>
+
+    <!-- ACUERDO DÍA -->
+    <ion-item>
+      <ion-label position="floating"><b>Día:</b></ion-label>
+      <ion-datetime display-format="DD/MMMM/YYYY" 
+                    picker-format="DD/MMMM/YYYY"
+                    month-names="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"
+                    [min]="minTime"
+                    max="2122-03-07" 
+                    [(ngModel)]="acuerdo.fecha" 
+                    doneText="Aceptar"
+                    cancelText="Cancelar" required></ion-datetime>
+    </ion-item>
+
+    <!-- ACUERDO HORA -->
+    <ion-item>
+      <ion-label position="floating"><b>Hora:</b></ion-label>
+      <ion-datetime display-format="HH:mm" 
+                    picker-format="HH mm"
+                    [(ngModel)]="acuerdo.hora" 
+                    doneText="Aceptar"
+                    cancelText="Cancelar" required></ion-datetime>
+    </ion-item>
+
+    <!-- ACUERDO DURACIÓN -->
+    <ion-item>
+      <ion-label position="floating"><b>Duración:</b></ion-label>
+      <ion-input type="number" min="0" max="23" [(ngModel)]="acuerdo.duracion" required></ion-input>
+    </ion-item>
+
+    <!-- ACUERDO DESCRIPCIÓN -->
+    <ion-item>
+      <ion-label position="floating"><b>Descripción:</b></ion-label>
+      <ion-textarea minlength="3" maxlength="250" [(ngModel)]="acuerdo.descripcion" required></ion-textarea>
+    </ion-item>
+    <span class="caracteres">{{ 250 - acuerdo.descripcion.length }} caracteres restantes</span>
+
+    <!-- ACUERDO OPCIONES -->
+    <ion-item detail="true" (click)="mostrarOpciones()">
+      <ion-label><b>Opciones</b></ion-label>
+    </ion-item>
+    
+    <!-- ACUERDO  IMAGEN-->
+    <ion-item [hidden]="plataforma">
+      <ion-row style="width: 100%; margin-top:3%;">
+        <ion-col size="6" >
+          <ion-label style="margin-top:4.5%;"><b>Imagen:</b></ion-label>
+
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="full"
+                  shape="round"
+                  style="margin-bottom: 9%;"
+                  (click)="galeria()"
+                  >
+        <ion-icon slot="start" name="images"></ion-icon>
+        Galería
+      </ion-button>
+
+        </ion-col>
+      </ion-row>
+      
+      
+    </ion-item>
+
+    <!---MOSTRAR IMAGEN -->
+    <ion-grid *ngIf="tempImages">
+      
+      <ion-card>
+        <img [src]="tempImages" class="formatoImagen">
+      </ion-card>
+  
+    </ion-grid>
+
+    <!-- <ion-row>
+      <ion-col size="6" offset="6">
+        <ion-button expand="full"
+                    shape="round"
+                    (click)="galeria()">
+          <ion-icon slot="start" name="images"></ion-icon>
+          Galería
+        </ion-button>
+      </ion-col>
+    </ion-row> -->
+
+    <!-- <ion-row>
+      <ion-col size="3" *ngFor="let image of tempImages">
+        <ion-card>
+          <img [src]="image">
+        </ion-card>
+      </ion-col>
+    </ion-row> -->
+
+  </ion-list>
+
+  <ion-button  color="tertiary" 
+               shape="round" 
+               expand="full"
+               (click)="actualizar()"
+               [disabled]="acuerdo.titulo.length < 3 ||
+                           acuerdo.descripcion.length < 3 ||
+                           acuerdo.fecha == null ||
+                           acuerdo.hora == null ||
+                           acuerdo.duracion < 1 ||
+                           (acuerdo.opciones | json) == '{}' ">
+    Editar
+  </ion-button>
+
+</ion-content>

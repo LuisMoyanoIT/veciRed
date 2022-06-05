@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab1" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- TITULO -->
+  <div class="titulo"><h4 class="ion-text-center"><b>VOTACIONES</b></h4></div>
+
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Votaciones vacio -->
+  <div class="sinVotaciones"  *ngIf="emptyVotaciones">
+    <h3 class="sinVotacionesTitulo"><b>No se han lanzado votaciones en tu comunidad</b></h3>
+    <img class="sinVotacionesImagen"src="/../../assets/sadHouse.png">
+    <!-- <h3 class="sinAcuerdosTitulo"><b>¡Crea el primero!</b></h3> -->
+      
+  </div>
+
+
+  <!-- Acuerdos -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col  size="12" size-lg="4" size-md="6" size-sm="12" size-xs="12"
+                *ngFor="let votacionPublicada of acuerdos">
+        <app-votacion-publicada [votacionPublicada]="votacionPublicada"></app-votacion-publicada>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Scroll infinito -->
+  <ion-infinite-scroll    [disabled]="deshabilitar"
+                          threshold="100px" 
+                          (ionInfinite)="scroll($event)">
+      <ion-infinite-scroll-content>
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+</ion-content>
+
+<!-- Boton acuerdos anteriores -->
+<ion-fab vertical="bottom" slot="fixed">
+    <ion-button  color="tertiary"
+                 expand="full"
+                 shape="round"
+                 (click)="mostrarRegistro()">
+      Acuerdos anteriores
+    </ion-button>
+</ion-fab>

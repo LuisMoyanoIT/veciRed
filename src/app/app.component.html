@@ -1,0 +1,48 @@
+<ion-app>
+
+  <ion-menu (ionWillOpen)="menuOpened()" side="start" menuId="first" contentId="main"  >
+    <ion-header>
+      <ion-toolbar style="--background: linear-gradient(135deg, #110A3B, #2f32a0);">
+        <ion-title color="light">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle >
+          <ion-item routerLink="/main/tabs/comunidad">
+            <ion-icon name="people-outline" slot="start"></ion-icon>
+            Mis comunidades
+          </ion-item>
+          <ion-item *ngIf="rol == 1" routerLink="/main/tabs/solicitud" >
+            <ion-icon slot="start" name="person-add-outline"></ion-icon> 
+            Mis solicitudes <span *ngIf="largoSolicitud >= 1" slot="end" class="solicitud">+{{largoSolicitud}}</span>
+          </ion-item>
+          <ion-item *ngIf="rol == 1" routerLink="/main/tabs/gestionar" >
+            <ion-icon slot="start" name="body-outline"></ion-icon> 
+            Miembros
+          </ion-item>
+          <ion-item *ngIf="rol == 1" routerLink="/main/tabs/acuerdos">
+            <ion-icon name="megaphone-outline" slot="start"></ion-icon>
+            Acuerdos
+          </ion-item>
+          <ion-item routerLink="/main/tabs/votaciones">
+            <ion-icon name="megaphone-outline" slot="start"></ion-icon>
+            Votaciones
+          </ion-item >
+          <ion-item (click)="goToMisAvisos()">
+            <ion-icon name="receipt-outline" slot="start"></ion-icon>
+            Mis avisos
+          </ion-item>
+          <ion-item (click)="logout()">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            Cerrar Sesión
+          </ion-item>
+          
+          
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

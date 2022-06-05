@@ -1,0 +1,669 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start" color="light">
+      <ion-back-button defaultHref="/main/tabs/comunidad" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--INICIO TITULO-->
+  <ion-grid>
+    <div class="ripple-parent">
+      <ion-row>    
+        <ion-col  class="avisosTitlte ion-text-center">
+          <b>BUSCAR COMUNIDAD</b>
+        </ion-col>
+      </ion-row>     
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-grid>
+  <!--FIN TITULO-->
+
+  <ion-grid style="text-align:center">
+    <!-- Animated Searchbar -->
+    <ion-searchbar maxlength="30"  [(ngModel)]="comunidad.nombreComunidad" animated placeholder="Ingrese el nombre" color="light"></ion-searchbar>
+
+    <!--INICIO SELECT REGIONES-->
+    
+      
+        <!---INICIO SELECCION REGION-->
+      <!---https://www.bcn.cl/siit/nuestropais/regiones-->
+      <ion-item  >
+      
+        <ion-label><b>Región:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.region">
+          <ion-select-option value="Arica y Parinacota">Arica y Parinacota</ion-select-option>
+          <ion-select-option value="Tarapacá">Tarapacá</ion-select-option>
+          <ion-select-option value="Antofagasta">Antofagasta</ion-select-option>
+          <ion-select-option value="Atacama">Atacama</ion-select-option>
+          <ion-select-option value="Coquimbo">Coquimbo</ion-select-option>
+          <ion-select-option value="Valparaíso">Valparaíso</ion-select-option>
+          <ion-select-option value="Bernardo O'higgins">Bernardo O'higgins</ion-select-option>
+          <ion-select-option value="Maule">Maule</ion-select-option>
+          <ion-select-option value="Ñuble">Ñuble</ion-select-option>
+          <ion-select-option value="Bío-Bío">Bío-Bío</ion-select-option>
+          <ion-select-option value="La Araucanía">La Araucanía</ion-select-option>
+          <ion-select-option value="Los Ríos">Los Ríos</ion-select-option>
+          <ion-select-option value="Los Lagos">Los Lagos</ion-select-option>
+          <ion-select-option value="Aysen">Aysen</ion-select-option>
+          <ion-select-option value="Magallanes">Magallanes</ion-select-option>
+          <ion-select-option value="Metropolitana">Metropolitana</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!---FIN SELECCION REGION-->
+      
+      <ion-col>
+        <!---INICIO SELECCION DE COMUNAS-->
+
+      <!--INICIO ARICA Y PARINACOTA-->
+      <ion-item *ngIf="comunidad.region == 'Arica y Parinacota' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Arica">Arica</ion-select-option>
+          <ion-select-option value="Camarones">Camarones</ion-select-option>
+          <ion-select-option value="Putre">Putre</ion-select-option>
+          <ion-select-option value="General Lagos">General Lagos</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN ARICA Y PARINACOTA-->
+
+      <!--INICIO TARAPACA-->
+      <ion-item *ngIf="comunidad.region == 'Tarapacá' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Alto Hospicio">Alto Hospicio</ion-select-option>
+          <ion-select-option value="Iquique">Iquique</ion-select-option>
+          <ion-select-option value="Huara">Huara</ion-select-option>
+          <ion-select-option value="Camiña">Camiña</ion-select-option>
+          <ion-select-option value="Colchane">Colchane</ion-select-option>
+          <ion-select-option value="Pica">Pica</ion-select-option>
+          <ion-select-option value="Pozo Almonte">Pozo Almonte</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN TARAPACA-->
+
+      <!--INICIO Antofagasta-->
+      <ion-item *ngIf="comunidad.region == 'Antofagasta' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Tocopilla">Tocopilla</ion-select-option>
+          <ion-select-option value="Maria Elena">Maria Elena</ion-select-option>
+          <ion-select-option value="Calama">Calama</ion-select-option>
+          <ion-select-option value="Ollagüe">Ollagüe</ion-select-option>
+          <ion-select-option value="San Pedro de Atacama">San Pedro de Atacama</ion-select-option>
+          <ion-select-option value="Antofagasta">Antofagasta</ion-select-option>
+          <ion-select-option value="Mejillones">Mejillones</ion-select-option>
+          <ion-select-option value="Sierra Gorda">Sierra Gorda</ion-select-option>
+          <ion-select-option value="Taltal">Taltal</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Antofagasta-->
+
+      <!--INICIO Atacama-->
+      <ion-item *ngIf="comunidad.region == 'Atacama' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Chañaral">Chañaral</ion-select-option>
+          <ion-select-option value="Diego de Almagro">Diego de Almagro</ion-select-option>
+          <ion-select-option value="Copiapó">Copiapó</ion-select-option>
+          <ion-select-option value="Caldera">Caldera</ion-select-option>
+          <ion-select-option value="Tierra Amarilla">Tierra Amarilla</ion-select-option>
+          <ion-select-option value="Vallenar">Vallenar</ion-select-option>
+          <ion-select-option value="Freirina">Freirina</ion-select-option>
+          <ion-select-option value="Huasco">Huasco</ion-select-option>
+          <ion-select-option value="Alto del Carmen">Alto del Carmen</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Atacama-->
+
+      <!--INICIO Coquimbo-->
+      <ion-item *ngIf="comunidad.region == 'Coquimbo' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="La serena">La serena</ion-select-option>
+          <ion-select-option value="La higuera">La higuera</ion-select-option>
+          <ion-select-option value="Coquimbo">Coquimbo</ion-select-option>
+          <ion-select-option value="Andacollo">Andacollo</ion-select-option>
+          <ion-select-option value="Vicuña">Vicuña</ion-select-option>
+          <ion-select-option value="Paihuano">Paihuano</ion-select-option>
+          <ion-select-option value="Ovalle">Ovalle</ion-select-option>
+          <ion-select-option value="Rio Hurtado">Rio Hurtado</ion-select-option>
+          <ion-select-option value="Monte Patria">Monte Patria</ion-select-option>
+          <ion-select-option value="Combarbalá">Combarbalá</ion-select-option>
+          <ion-select-option value="Punitaqui">Punitaqui</ion-select-option>
+          <ion-select-option value="Illapel">Illapel</ion-select-option>
+          <ion-select-option value="Salamanca">Salamanca</ion-select-option>
+          <ion-select-option value="Los Vilos">Los Vilos</ion-select-option>
+          <ion-select-option value="Canela">Canela</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Coquimbo-->
+
+      <!--INICIO Valparaíso-->
+      <ion-item *ngIf="comunidad.region == 'Valparaíso' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="La Ligua">La Ligua</ion-select-option>
+          <ion-select-option value="Petorca">Petorca</ion-select-option>
+          <ion-select-option value="Cabildo">Cabildo</ion-select-option>
+          <ion-select-option value="Zapallar">Zapallar</ion-select-option>
+          <ion-select-option value="Papudo">Papudo</ion-select-option>
+          <ion-select-option value="Los Andes">Los Andes</ion-select-option>
+          <ion-select-option value="San Esteban">San Esteban</ion-select-option>
+          <ion-select-option value="Calle Larga">Calle Larga</ion-select-option>
+          <ion-select-option value="Rinconada">Rinconada</ion-select-option>
+          <ion-select-option value="San Felipe">San Felipe</ion-select-option>
+          <ion-select-option value="Putaendo">Putaendo</ion-select-option>
+          <ion-select-option value="Santa María">Santa María</ion-select-option>
+          <ion-select-option value="Panquehue">Panquehue</ion-select-option>
+          <ion-select-option value="Llaillay">Llaillay</ion-select-option>
+          <ion-select-option value="Catemu">Catemu</ion-select-option>
+          <ion-select-option value="Quillota">Quillota</ion-select-option>
+          <ion-select-option value="La Cruz">La Cruz</ion-select-option>
+          <ion-select-option value="La Calera">La Calera</ion-select-option>
+          <ion-select-option value="Nogales">Nogales</ion-select-option>
+          <ion-select-option value="Hijuelas">Hijuelas</ion-select-option>
+          <ion-select-option value="Quilpué">Quilpué</ion-select-option>
+          <ion-select-option value="Villa Alemana">Villa Alemana</ion-select-option>
+          <ion-select-option value="Limache">Limache</ion-select-option>
+          <ion-select-option value="Olmué">Olmué</ion-select-option>
+          <ion-select-option value="Valparaíso">Valparaíso</ion-select-option>
+          <ion-select-option value="Viña del Mar">Viña del Mar</ion-select-option>
+          <ion-select-option value="Quintero">Quintero</ion-select-option>
+          <ion-select-option value="Puchuncaví">Puchuncaví</ion-select-option>
+          <ion-select-option value="Casablanca">Casablanca</ion-select-option>
+          <ion-select-option value="Concón">Concón</ion-select-option>
+          <ion-select-option value="Juan Fernández">Juan Fernández</ion-select-option>
+          <ion-select-option value="San Antonio">San Antonio</ion-select-option>
+          <ion-select-option value="Cartagena">Cartagena</ion-select-option>
+          <ion-select-option value="El Tabo">El Tabo</ion-select-option>
+          <ion-select-option value="El Quisco">El Quisco</ion-select-option>
+          <ion-select-option value="Algarrobo">Algarrobo</ion-select-option>
+          <ion-select-option value="Santo Domingo">Santo Domingo</ion-select-option>
+          <ion-select-option value="Isla de Pascua">Isla de Pascua</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Valparaíso-->
+
+      <!--INICIO Bernardo O'higgins-->
+      <ion-item *ngIf="comunidad.region.includes('Bernardo') " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Rancagua">Rancagua</ion-select-option>
+          <ion-select-option value="Graneros">Graneros</ion-select-option>
+          <ion-select-option value="Mostazal">Mostazal</ion-select-option>
+          <ion-select-option value="Codegua">Codegua</ion-select-option>
+          <ion-select-option value="Machalí">Machalí</ion-select-option>
+          <ion-select-option value="Olivar">Olivar</ion-select-option>
+          <ion-select-option value="Requínoa">Requínoa</ion-select-option>
+          <ion-select-option value="Rengo">Rengo</ion-select-option>
+          <ion-select-option value="Malloa">Malloa</ion-select-option>
+          <ion-select-option value="Quinta de Tilcoco">Quinta de Tilcoco</ion-select-option>
+          <ion-select-option value="San Vicente de Tagua Tagua">San Vicente de Tagua Tagua</ion-select-option>
+          <ion-select-option value="Pichidegua">Pichidegua</ion-select-option>
+          <ion-select-option value="Peumo">Peumo</ion-select-option>
+          <ion-select-option value="Coltauco">Coltauco</ion-select-option>
+          <ion-select-option value="Coínco">Coínco</ion-select-option>
+          <ion-select-option value="Doñihue">Doñihue</ion-select-option>
+          <ion-select-option value="Las Cabras">Las Cabras</ion-select-option>
+          <ion-select-option value="San Fernando">San Fernando</ion-select-option>
+          <ion-select-option value="Chimbarongo">Chimbarongo</ion-select-option>
+          <ion-select-option value="Placilla">Placilla</ion-select-option>
+          <ion-select-option value="Nancagua">Nancagua</ion-select-option>
+          <ion-select-option value="Chépica">Chépica</ion-select-option>
+          <ion-select-option value="Santa Cruz">Santa Cruz</ion-select-option>
+          <ion-select-option value="Lolol">Lolol</ion-select-option>
+          <ion-select-option value="Pumanque">Pumanque</ion-select-option>
+          <ion-select-option value="Palmilla">Palmilla</ion-select-option>
+          <ion-select-option value="Peralillo">Peralillo</ion-select-option>
+          <ion-select-option value="Pichilemu">Pichilemu</ion-select-option>
+          <ion-select-option value="Navidad">Navidad</ion-select-option>
+          <ion-select-option value="Litueche">Litueche</ion-select-option>
+          <ion-select-option value="La Estrella">La Estrella</ion-select-option>
+          <ion-select-option value="Marchigüe">Marchigüe</ion-select-option>
+          <ion-select-option value="Paredones">Paredones</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Bernardo O'higgins-->
+
+      <!--INICIO Maule-->
+      <ion-item *ngIf="comunidad.region == 'Maule' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Curicó">Curicó</ion-select-option>
+          <ion-select-option value="Teno">Teno</ion-select-option>
+          <ion-select-option value="Romeral">Romeral</ion-select-option>
+          <ion-select-option value="Molina">Molina</ion-select-option>
+          <ion-select-option value="Sagrada Familia">Sagrada Familia</ion-select-option>
+          <ion-select-option value="Hualañé">Hualañé</ion-select-option>
+          <ion-select-option value="Licantén">Licantén</ion-select-option>
+          <ion-select-option value="Vichuquén">Vichuquén</ion-select-option>
+          <ion-select-option value="Rauco">Rauco</ion-select-option>
+          <ion-select-option value="Talca">Talca</ion-select-option>
+          <ion-select-option value="Pelarco">Pelarco</ion-select-option>
+          <ion-select-option value="Rio Claro">Rio Claro</ion-select-option>
+          <ion-select-option value="San Clemente">San Clemente</ion-select-option>
+          <ion-select-option value="Maule">Maule</ion-select-option>
+          <ion-select-option value="San Rafael">San Rafael</ion-select-option>
+          <ion-select-option value="Empedrado">Empedrado</ion-select-option>
+          <ion-select-option value="Pencahue">Pencahue</ion-select-option>
+          <ion-select-option value="Constitución">Constitución</ion-select-option>
+          <ion-select-option value="Curepto">Curepto</ion-select-option>
+          <ion-select-option value="Linares">Linares</ion-select-option>
+          <ion-select-option value="Yerbas Buenas">Yerbas Buenas</ion-select-option>
+          <ion-select-option value="Colbún">Colbún</ion-select-option>
+          <ion-select-option value="Longaví">Longaví</ion-select-option>
+          <ion-select-option value="Parral">Parral</ion-select-option>
+          <ion-select-option value="Retiro">Retiro</ion-select-option>
+          <ion-select-option value="Villa Alegre">Villa Alegre</ion-select-option>
+          <ion-select-option value="San Javier de Loncomilla">San Javier de Loncomilla</ion-select-option>
+          <ion-select-option value="Cauquenes">Cauquenes</ion-select-option>
+          <ion-select-option value="Pelluhue">Pelluhue</ion-select-option>
+          <ion-select-option value="Chanco">Chanco</ion-select-option>
+         
+        </ion-select>
+      </ion-item>
+      <!--FIN Maule-->
+
+       <!--INICIO Ñuble-->
+       <ion-item *ngIf="comunidad.region == 'Ñuble' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Chillán">Chillán</ion-select-option>
+          <ion-select-option value="Bulnes">Bulnes</ion-select-option>
+          <ion-select-option value="Chillán Viejo">Chillán Viejo</ion-select-option>
+          <ion-select-option value="El Carmen">El Carmen</ion-select-option>
+          <ion-select-option value="Pemuco">Pemuco</ion-select-option>
+          <ion-select-option value="Pinto">Pinto</ion-select-option>
+          <ion-select-option value="Quillón">Quillón</ion-select-option>
+          <ion-select-option value="San Ignacio">San Ignacio</ion-select-option>
+          <ion-select-option value="Yungay">Yungay</ion-select-option>
+          <ion-select-option value="San Carlos">San Carlos</ion-select-option>
+          <ion-select-option value="Coihueco">Coihueco</ion-select-option>
+          <ion-select-option value="Ñiquén">Ñiquén</ion-select-option>
+          <ion-select-option value="San Fabián">San Fabián</ion-select-option>
+          <ion-select-option value="San Nicolás">San Nicolás</ion-select-option>
+          <ion-select-option value="Quirihue">Quirihue</ion-select-option>
+          <ion-select-option value="Cobquecura">Cobquecura</ion-select-option>
+          <ion-select-option value="Coelemu">Coelemu</ion-select-option>
+          <ion-select-option value="Ninhue">Ninhue</ion-select-option>
+          <ion-select-option value="Portezuelo">Portezuelo</ion-select-option>
+          <ion-select-option value="Ránquil">Ránquil</ion-select-option>
+          <ion-select-option value="Treguaco">Treguaco</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Ñuble-->
+
+      <!--INICIO Bío-Bío-->
+      <ion-item *ngIf="comunidad.region == 'Bío-Bío' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Alto Bío-Bío">Alto Bío-Bío</ion-select-option>
+          <ion-select-option value="Los Ángeles">Los Ángeles</ion-select-option>
+          <ion-select-option value="Cabrero">Cabrero</ion-select-option>
+          <ion-select-option value="Tucapel">Tucapel</ion-select-option>
+          <ion-select-option value="Antuco">Antuco</ion-select-option>
+          <ion-select-option value="Quilleco">Quilleco</ion-select-option>
+          <ion-select-option value="Santa Bárbara">Santa Bárbara</ion-select-option>
+          <ion-select-option value="Quilaco">Quilaco</ion-select-option>
+          <ion-select-option value="Mulchén">Mulchén</ion-select-option>
+          <ion-select-option value="Negrete">Negrete</ion-select-option>
+          <ion-select-option value="Nacimiento">Nacimiento</ion-select-option>
+          <ion-select-option value="Laja">Laja</ion-select-option>
+          <ion-select-option value="San Rosendo">San Rosendo</ion-select-option>
+          <ion-select-option value="Yumbel">Yumbel</ion-select-option>
+          <ion-select-option value="Concepción">Concepción</ion-select-option>
+          <ion-select-option value="Talcahuano">Talcahuano</ion-select-option>
+          <ion-select-option value="Penco">Penco</ion-select-option>
+          <ion-select-option value="Tomé">Tomé</ion-select-option>
+          <ion-select-option value="Florida">Florida</ion-select-option>
+          <ion-select-option value="Hualpén">Hualpén</ion-select-option>
+          <ion-select-option value="Santa Juana">Santa Juana</ion-select-option>
+          <ion-select-option value="Lota">Lota</ion-select-option>
+          <ion-select-option value="Coronel">Coronel</ion-select-option>
+          <ion-select-option value="San Pedro de la Paz">San Pedro de la Paz</ion-select-option>
+          <ion-select-option value="Chiguayante">Chiguayante</ion-select-option>
+          <ion-select-option value="Lebu">Lebu</ion-select-option>
+          <ion-select-option value="Arauco">Arauco</ion-select-option>
+          <ion-select-option value="Curanilahue">Curanilahue</ion-select-option>
+          <ion-select-option value="Los Álamos">Los Álamos</ion-select-option>
+          <ion-select-option value="Cañete">Cañete</ion-select-option>
+          <ion-select-option value="Contulmo">Contulmo</ion-select-option>
+          <ion-select-option value="Tirúa">Tirúa</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Bío-Bío-->
+
+      <!--INICIO La Araucanía-->
+      <ion-item *ngIf="comunidad.region == 'La Araucanía' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Angol">Angol</ion-select-option>
+          <ion-select-option value="Renaico">Renaico</ion-select-option>
+          <ion-select-option value="Collipulli">Collipulli</ion-select-option>
+          <ion-select-option value="Lonquimay">Lonquimay</ion-select-option>
+          <ion-select-option value="Curacautín">Curacautín</ion-select-option>
+          <ion-select-option value="Ercilla">Ercilla</ion-select-option>
+          <ion-select-option value="Victoria">Victoria</ion-select-option>
+          <ion-select-option value="Traiguén">Traiguén</ion-select-option>
+          <ion-select-option value="Lumaco">Lumaco</ion-select-option>
+          <ion-select-option value="Purén">Purén</ion-select-option>
+          <ion-select-option value="Los Sauces">Los Sauces</ion-select-option>
+          <ion-select-option value="Temuco">Temuco</ion-select-option>
+          <ion-select-option value="Lautaro">Lautaro</ion-select-option>
+          <ion-select-option value="Perquenco">Perquenco</ion-select-option>
+          <ion-select-option value="Vilcún">Vilcún</ion-select-option>
+          <ion-select-option value="Cholchol">Cholchol</ion-select-option>
+          <ion-select-option value="Cunco">Cunco</ion-select-option>
+          <ion-select-option value="Melipeuco">Melipeuco</ion-select-option>
+          <ion-select-option value="Curarrehue">Curarrehue</ion-select-option>
+          <ion-select-option value="Pucón">Pucón</ion-select-option>
+          <ion-select-option value="Villarrica">Villarrica</ion-select-option>
+          <ion-select-option value="Freire">Freire</ion-select-option>
+          <ion-select-option value="Pitrufquén">Pitrufquén</ion-select-option>
+          <ion-select-option value="Gorbea">Gorbea</ion-select-option>
+          <ion-select-option value="Loncoche">Loncoche</ion-select-option>
+          <ion-select-option value="Toltén">Toltén</ion-select-option>
+          <ion-select-option value="Teodoro Schmidt">Teodoro Schmidt</ion-select-option>
+          <ion-select-option value="Saavedra">Saavedra</ion-select-option>
+          <ion-select-option value="Carahue">Carahue</ion-select-option>
+          <ion-select-option value="Nueva Imperial">Nueva Imperial</ion-select-option>
+          <ion-select-option value="Galvarino">Galvarino</ion-select-option>
+          <ion-select-option value="Padre Las Casas">Padre Las Casas</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN La Araucanía-->
+
+
+      <!--INICIO Los Ríos-->
+      <ion-item *ngIf="comunidad.region == 'Los Ríos' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Valdivia">Valdivia</ion-select-option>
+          <ion-select-option value="Corral">Corral</ion-select-option>
+          <ion-select-option value="Lanco">Lanco</ion-select-option>
+          <ion-select-option value="Los Lagos">Los Lagos</ion-select-option>
+          <ion-select-option value="Máfil">Máfil</ion-select-option>
+          <ion-select-option value="Mariquina">Mariquina</ion-select-option>
+          <ion-select-option value="Paillaco">Paillaco</ion-select-option>
+          <ion-select-option value="Panguipulli">Panguipulli</ion-select-option>
+          <ion-select-option value="La Unión">La Unión</ion-select-option>
+          <ion-select-option value="Futrono">Futrono</ion-select-option>
+          <ion-select-option value="Lago Ranco">Lago Ranco</ion-select-option>
+          <ion-select-option value="Río Bueno">Río Bueno</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Los Ríos-->
+
+      <!--INICIO Los Lagos-->
+      <ion-item *ngIf="comunidad.region == 'Los Lagos' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Quinchao">Quinchao</ion-select-option>
+          <ion-select-option value="Castro">Castro</ion-select-option>
+          <ion-select-option value="Ancud">Ancud</ion-select-option>
+          <ion-select-option value="Chonchi">Chonchi</ion-select-option>
+          <ion-select-option value="Curaco de Vélez">Curaco de Vélez</ion-select-option>
+          <ion-select-option value="Dalcahu">Dalcahue</ion-select-option>
+          <ion-select-option value="Puqueldón">Puqueldón</ion-select-option>
+          <ion-select-option value="Queilén">Queilén</ion-select-option>
+          <ion-select-option value="Quellón">Quellón</ion-select-option>
+          <ion-select-option value="Quemchi">Quemchi</ion-select-option>
+          <ion-select-option value="Río Negro">Río Negro</ion-select-option>
+          <ion-select-option value="Osorno">Osorno</ion-select-option>
+          <ion-select-option value="Puerto Octay">Puerto Octay</ion-select-option>
+          <ion-select-option value="Purranque">Purranque</ion-select-option>
+          <ion-select-option value="Puyehue">Puyehue</ion-select-option>
+          <ion-select-option value="San Juan de la Costa">San Juan de la Costa</ion-select-option>
+          <ion-select-option value="San Pablo">San Pablo</ion-select-option>
+          <ion-select-option value="Puerto Montt">Puerto Montt</ion-select-option>
+          <ion-select-option value="Calbuco">Calbuco</ion-select-option>
+          <ion-select-option value="Cochamó">Cochamó</ion-select-option>
+          <ion-select-option value="Fresia">Fresia</ion-select-option>
+          <ion-select-option value="Frutillar">Frutillar</ion-select-option>
+          <ion-select-option value="Los Muermos">Los Muermos</ion-select-option>
+          <ion-select-option value="Llanquihue">Llanquihue</ion-select-option>
+          <ion-select-option value="Maullín">Maullín</ion-select-option>
+          <ion-select-option value="Puerto Varas">Puerto Varas</ion-select-option>
+          <ion-select-option value="Chaitén">Chaitén</ion-select-option>
+          <ion-select-option value="Futaleufú">Futaleufú</ion-select-option>
+          <ion-select-option value="Hualaihué">Hualaihué</ion-select-option>
+          <ion-select-option value="Palena">Palena</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Los Lagos-->
+
+
+      <!--INICIO Aysen-->
+      <ion-item *ngIf="comunidad.region == 'Aysen' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Aysen">Aysen</ion-select-option>
+          <ion-select-option value="Cisnes">Cisnes</ion-select-option>
+          <ion-select-option value="Guaitecas">Guaitecas</ion-select-option>
+          <ion-select-option value="Lago Verde">Lago Verde</ion-select-option>
+          <ion-select-option value="Coyhaique">Coyhaique</ion-select-option>
+          <ion-select-option value="Cochrane">Cochrane</ion-select-option>
+          <ion-select-option value="O'higgins">O'higgins</ion-select-option>
+          <ion-select-option value="Tortel">Tortel</ion-select-option>
+          <ion-select-option value="Chile Chico">Chile Chico</ion-select-option>
+          <ion-select-option value="Río Ibáñez">Río Ibáñez</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Aysen-->
+
+
+      <!--INICIO Magallanes-->
+      <ion-item *ngIf="comunidad.region == 'Magallanes' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Porvenir">Porvenir</ion-select-option>
+          <ion-select-option value="Primavera">Primavera</ion-select-option>
+          <ion-select-option value="Timaukel">Timaukel</ion-select-option>
+          <ion-select-option value="Punta Arenas">Punta Arenas</ion-select-option>
+          <ion-select-option value="Laguna Blanca">Laguna Blanca</ion-select-option>
+          <ion-select-option value="Río Verde">Río Verde</ion-select-option>
+          <ion-select-option value="San Gregorio">San Gregorio</ion-select-option>
+          <ion-select-option value="Natales">Natales</ion-select-option>
+          <ion-select-option value="Torres del Paine">Torres del Paine</ion-select-option>
+          <ion-select-option value="Cabo de Hornos">Cabo de Hornos</ion-select-option>
+          <ion-select-option value="Antártica">Antártica</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN Magallanes-->
+
+
+      <!--INICIO Metropolitana-->
+      <ion-item *ngIf="comunidad.region == 'Metropolitana' " >
+        <ion-label><b>Comuna:</b></ion-label>
+        <ion-select placeholder="Seleccione"
+                    [(ngModel)]="comunidad.comuna">
+          <ion-select-option value="Talagante">Talagante</ion-select-option>
+          <ion-select-option value="El Monte">El Monte</ion-select-option>
+          <ion-select-option value="Isla de Maipo">Isla de Maipo</ion-select-option>
+          <ion-select-option value="Padre Hurtado">Padre Hurtado</ion-select-option>
+          <ion-select-option value="Peñaflor">Peñaflor</ion-select-option>
+          <ion-select-option value="La Pintana">La Pintana</ion-select-option>
+          <ion-select-option value="La Reina">La Reina</ion-select-option>
+          <ion-select-option value="Las Condes">Las Condes</ion-select-option>
+          <ion-select-option value="Lo Barnechea">Lo Barnechea</ion-select-option>
+          <ion-select-option value="Lo Espejo">Lo Espejo</ion-select-option>
+          <ion-select-option value="Lo Prado">Lo Prado</ion-select-option>
+          <ion-select-option value="Macul">Macul</ion-select-option>
+          <ion-select-option value="Maipú">Maipú</ion-select-option>
+          <ion-select-option value="Ñuñoa">Ñuñoa</ion-select-option>
+          <ion-select-option value="Pedro Aguirre Cerda">Pedro Aguirre Cerda</ion-select-option>
+          <ion-select-option value="Peñalolén">Peñalolén</ion-select-option>
+          <ion-select-option value="Providencia">Providencia</ion-select-option>
+          <ion-select-option value="Pudahuel">Pudahuel</ion-select-option>
+          <ion-select-option value="Quilicura">Quilicura</ion-select-option>
+          <ion-select-option value="Quinta Normal">Quinta Normal</ion-select-option>
+          <ion-select-option value="Recoleta">Recoleta</ion-select-option>
+          <ion-select-option value="Renca">Renca</ion-select-option>
+          <ion-select-option value="San Joaquín">San Joaquín</ion-select-option>
+          <ion-select-option value="San Miguel">San Miguel</ion-select-option>
+          <ion-select-option value="San Ramón">San Ramón</ion-select-option>
+          <ion-select-option value="Vitacura">Vitacura</ion-select-option>
+          <ion-select-option value="Santiago">Santiago</ion-select-option>
+          <ion-select-option value="Cerrillos">Cerrillos</ion-select-option>
+          <ion-select-option value="Cerro Navia">Cerro Navia</ion-select-option>
+          <ion-select-option value="Conchalí">Conchalí</ion-select-option>
+          <ion-select-option value="El Bosque">El Bosque</ion-select-option>
+          <ion-select-option value="Estación Central">Estación Central</ion-select-option>
+          <ion-select-option value="Huechuraba">Huechuraba</ion-select-option>
+          <ion-select-option value="Huechuraba">Huechuraba</ion-select-option>
+          <ion-select-option value="La Cisterna">La Cisterna</ion-select-option>
+          <ion-select-option value="La Florida">La Florida</ion-select-option>
+          <ion-select-option value="La Granja">La Granja</ion-select-option>
+          <ion-select-option value="Colina">Colina</ion-select-option>
+          <ion-select-option value="Lampa">Lampa</ion-select-option>
+          <ion-select-option value="Tiltil">Tiltil</ion-select-option>
+          <ion-select-option value="Puente Alto">Puente Alto</ion-select-option>
+          <ion-select-option value="Pirque">Pirque</ion-select-option>
+          <ion-select-option value="San José de Maipo">San José de Maipo</ion-select-option>
+          <ion-select-option value="San Bernardo">San Bernardo</ion-select-option>
+          <ion-select-option value="Buin">Buin</ion-select-option>
+          <ion-select-option value="Calera de Tango">Calera de Tango</ion-select-option>
+          <ion-select-option value="Paine">Paine</ion-select-option>
+          <ion-select-option value="Melipilla">Melipilla</ion-select-option>
+          <ion-select-option value="Alhué">Alhué</ion-select-option>
+          <ion-select-option value="Curacaví">Curacaví</ion-select-option>
+          <ion-select-option value="María Pinto">María Pinto</ion-select-option>
+          <ion-select-option value="San Pedro">San Pedro</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--FIN La Metropolitana-->
+
+
+      <!---FIN SELECCION DE COMUNAS-->
+
+
+      </ion-col>
+    
+
+
+    <!--FIN SELECT REGIONES-->
+    <!-- Round -->
+    <ion-button class="searchComunity"
+                style="margin-top: 2vw;"
+                shape="round"
+                (click)="buscar()"
+                [disabled] ="comunidad.region == '' && comunidad.nombreComunidad == ''"
+                >Buscar</ion-button>
+    
+  </ion-grid>
+<!--INICIO RESULTADOS BUSQUEDA COMUNIDADES-->
+  <ion-grid *ngIf="comunidades.length > 0">
+    <ion-row>
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+      *ngFor="let comunity of comunidades; let indexOfelement=index;"
+      >
+      <ion-card class="avisoUnitario">
+        <ion-card-header class=" fontColor ion-text-center" style="font-size:medium">
+          <ion-card-title>
+            <ion-icon name="body"></ion-icon>
+           <b>{{comunity.nombreComunidad}}</b>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class=" fontColor ion-text-center">
+          <ion-icon name="document-text"></ion-icon>
+          {{comunity.descripcion}}
+          <ion-row >
+            <ion-col>
+              <ion-icon style="margin-bottom: -0.7vw"name="location-sharp"></ion-icon>
+              <b>{{comunity.region}}</b>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row >
+            <ion-col>
+              {{comunity.comuna}}
+            </ion-col>
+          </ion-row>
+          <!---INICIO BOTON UNIRME-->
+          <ion-button  *ngIf="position != indexOfelement"
+                size="small"
+                color="success"
+                (click)="unirme(indexOfelement)"
+                ><span style="color:black;">Unirme</span>
+          </ion-button>
+          <!---FIN BOTON UNIRME-->
+
+          <!--INICIO SOLICITUD MENSAJE-->
+          <ion-row *ngIf="mostrarInputMensaje && position == indexOfelement">
+            <ion-col>
+              
+              <ion-textarea [(ngModel)]="solicitud.mensaje"
+                            style="border: 1px #241816 solid;"
+                            minlength="3" maxlength="250"
+                            >
+                            
+              </ion-textarea>
+              <ion-row >
+                <span class="caracteres">{{ 250 - solicitud.mensaje.length }} caracteres restantes</span>
+              </ion-row>
+              
+              <ion-button  
+                class="buscarCom"
+                id="test"
+                size="small"
+                color="tertiary"
+                (click)="enviarSolicitud(comunity)"
+                [disabled]="this.solicitud.mensaje.length <= 2"
+                ><span >Enviar</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <!--FIN SOLICITUD MENSAJE-->
+        </ion-card-content>
+      </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<!--FIN RESULTADOS BUSQUEDA COMUNIDADES-->
+
+
+<!---INICIO BUSQUEDA VACIA-->
+<ion-grid *ngIf="noComunity" class="ion-text-center" style="height: 90%;">
+ <ion-card class="noComunidad" >
+  <h3 class="noAvisosTitle"><b>Comunidad no encontrada</b></h3>
+  <img class="noAvisosImage"src="/../../assets/noComunity.png">
+  <h3 class="noAvisosTitle"><b>¡Vuelve a intentarlo!</b></h3>
+ </ion-card>
+</ion-grid>
+
+
+<!---FIN BUSQUEDA VACIA-->
+  
+
+
+</ion-content>

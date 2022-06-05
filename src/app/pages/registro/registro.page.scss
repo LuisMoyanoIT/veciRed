@@ -1,0 +1,38 @@
+:host {
+    ion-content {
+        --background: linear-gradient(135deg, #110A3B, #2f32a0);
+        --padding-top: 10px;
+    }
+}
+
+img {
+    width: 60px;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.my-label {
+    font-size: 18px;
+}
+
+ion-item {
+    --padding-top: 4px;
+}
+
+.my-button {
+    margin-top: 2em;
+}
+
+ion-datetime {
+    color: white;
+}
+
+.caracteres{
+    font-size:small;
+    margin-left: 55%;
+    //background-color: #f4f5f8;
+    color: white;
+
+}

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab1" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--INICIO TITULO-->
+  <ion-grid>
+    <div class="ripple-parent">
+      <ion-row>    
+        <ion-col  class="avisosTitlte ion-text-center">
+          <b>MI PERFIL</b>
+        </ion-col>
+      </ion-row>     
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-grid>
+  <!--FIN TITULO-->
+
+  <ion-grid >
+    <h3 style="text-align: center;" ><b> Datos personales</b></h3>
+    <ion-list class="perfile ion-text-center" >
+      
+      <ion-item class="textiee">
+        <ion-icon slot="start" name="id-card-outline" style="color: black;"></ion-icon> {{usuario.nombre}}
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="mail-outline" style="color: black;"></ion-icon> {{ usuario.email}}
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="calendar-outline" style="color: black;"></ion-icon> {{usuario.fechaNacimiento}}
+      </ion-item>
+    </ion-list>
+    <!--inicio boton condiciones de uso-->
+    <ion-button    style="margin-top: 20%;"
+                   routerLink="/main/tabs/condiciones"
+                   color="secondary" 
+                   shape="round" 
+                   expand="full"
+                     
+                   >
+        Condiciones de uso
+      </ion-button>
+  </ion-grid>
+
+</ion-content>

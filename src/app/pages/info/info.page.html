@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/detalle-votacion" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- TITULO -->
+  <div class="titulo"><h4 class="ion-text-center"><b>INFORMACIÓN</b></h4></div>
+
+  <!-- OPCIONES -->
+  <ion-list *ngFor="let opcion of votacion.opciones | keyvalue;  let i=index;">
+
+    <ion-card  class="acuerdo">
+      <ion-card-content>
+        <ion-item class="item-background-color">
+          <ion-text class="ion-text-justify"><b>{{i + 1}}.- {{opcion.value['titulo']}}:</b> {{opcion.value['descripcion']}}</ion-text>
+        </ion-item>
+    </ion-card-content>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

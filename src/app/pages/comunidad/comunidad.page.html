@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab1" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons routerLink="/main/tabs/crear-com" slot="end">   
+      
+        <ion-icon slot="icon-only" name="add-outline" color="light" ></ion-icon>
+     
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--INICIO TITULO-->
+  <ion-grid>
+    <div class="ripple-parent">
+      <ion-row>
+        <ion-col>
+
+        </ion-col>    
+        <ion-col  class="avisosTitlte ion-text-center">
+          <b>COMUNIDADES</b>
+        </ion-col>
+        <ion-col >
+          <ion-buttons  class="cambiarComunidad"
+                  (click)="buscarComunidad()"
+                  >
+                  <!-- <ion-icon slot="icon-only" name="person-add-sharp"></ion-icon>       -->
+                  <ion-icon slot="icon-only" name="search-sharp"></ion-icon>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>     
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-grid>
+  <!--FIN TITULO-->
+  <ion-row>
+    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+    *ngFor="let comunidad of Comunidad; let indexOfelement=index;"
+    >
+    <ion-card class="avisoUnitario">
+      <ion-card-header class=" fontColor ion-text-center">
+        <ion-card-title>
+          <ion-icon name="body"></ion-icon>
+           <b>{{comunidad.nombreComunidad}}</b>
+        </ion-card-title>
+        
+      </ion-card-header>
+      <ion-card-content class=" fontColor ion-text-center">
+        <ion-icon name="document-text"></ion-icon>
+        {{comunidad.descripcion}}
+
+        <ion-row >
+          <ion-col>
+            <ion-icon style="margin-bottom: -0.7vw"name="location-sharp"></ion-icon>
+            <b>{{comunidad.region}}</b>
+          </ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col>
+            {{comunidad.comuna}}
+          </ion-col>
+        </ion-row>
+        
+        <!--INICIO OPCIONES EDITAR Y ELIMINAR-->
+       <ion-row >
+        <ion-col  style="margin-left: 20%;">
+          <ion-buttons>
+            <ion-button 
+                         (click)="editarComunidad(comunidad, indexOfelement)"
+            >
+              
+             <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+         
+        </ion-col>
+        <ion-col >
+         <ion-buttons>
+           <ion-button class="abandonarComunidad" (click)="abandonarComunidad(comunidad, indexOfelement)">
+            <ion-icon  style="color: crimson;"slot="icon-only" name="person-remove"></ion-icon>
+           </ion-button>
+         </ion-buttons>
+        </ion-col>
+      </ion-row>
+      <!--FIN OPCIONES EDITAR Y ELIMINAR-->
+       
+        
+      </ion-card-content>
+    </ion-card>
+      
+
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

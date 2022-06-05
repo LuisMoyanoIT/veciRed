@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/crear-acuerdo" color="light"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center" color="light">
+      VeciRed
+    </ion-title>
+
+    <ion-buttons slot="end">   
+      <ion-button disabled>
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- TITULO -->
+  <div class="titulo"><h4 class="ion-text-center"><b>OPCIONES</b></h4></div>
+
+  <ion-list>
+
+    <!-- OPCIÓN 1 -->
+    <ion-item>
+      <ion-label position="floating"><b>Opción 1:</b></ion-label>
+      <ion-input type="text" minlength="3" maxlength="30" [(ngModel)]="opcion1.titulo" required></ion-input>
+    </ion-item>
+    <span class="caracteres">{{ 30 - opcion1.titulo.length }} caracteres restantes</span> 
+
+    <!-- DESCRIPCIÓN 1 -->
+    <ion-item>
+      <ion-label position="floating"><b>Descripción:</b></ion-label>
+      <ion-textarea minlength="3" maxlength="250" [(ngModel)]="opcion1.descripcion" required></ion-textarea>
+    </ion-item>
+    <span class="caracteres">{{ 250 - opcion1.descripcion.length }} caracteres restantes</span> 
+
+    <!-- OPCIÓN 2 -->
+    <ion-item>
+      <ion-label position="floating"><b>Opción 2:</b></ion-label>
+      <ion-input type="text" minlength="3" maxlength="30" [(ngModel)]="opcion2.titulo" required></ion-input>
+    </ion-item>
+    <span class="caracteres">{{ 30 - opcion2.titulo.length }} caracteres restantes</span>
+    
+    <!-- DESCRIPCIÓN 2 -->
+    <ion-item>
+      <ion-label position="floating"><b>Descripción:</b></ion-label>
+      <ion-textarea minlength="3" maxlength="250" [(ngModel)]="opcion2.descripcion" required></ion-textarea>
+    </ion-item>
+    <span class="caracteres">{{ 250 - opcion2.descripcion.length }} caracteres restantes</span>
+
+    <!-- OPCIÓN 3 -->
+    <ion-item [hidden]="ocultarOpcion3">
+      <ion-label position="floating"><b>Opción 3:</b></ion-label>
+      <ion-input type="text" minlength="3" maxlength="30" [(ngModel)]="opcion3.titulo" required></ion-input>
+    </ion-item>
+    <span class="caracteres" [hidden]="ocultarOpcion3">{{ 30 - opcion3.titulo.length }} caracteres restantes</span>
+    
+    <!-- DESCRIPCIÓN 3 -->
+    <ion-item [hidden]="ocultarOpcion3">
+      <ion-label position="floating"><b>Descripción:</b></ion-label>
+      <ion-textarea minlength="3" maxlength="250" [(ngModel)]="opcion3.descripcion" required></ion-textarea>
+    </ion-item>
+    <span class="caracteres" [hidden]="ocultarOpcion3">{{ 250 - opcion3.descripcion.length }} caracteres restantes</span>
+
+    <!-- OPCIÓN 4 -->
+    <ion-item [hidden]="ocultarOpcion4">
+      <ion-label position="floating"><b>Opción 4:</b></ion-label>
+      <ion-input type="text" minlength="3" maxlength="30" [(ngModel)]="opcion4.titulo" required></ion-input>
+    </ion-item>
+    <span class="caracteres" [hidden]="ocultarOpcion4">{{ 30 - opcion4.titulo.length }} caracteres restantes</span>
+    
+    <!-- DESCRIPCIÓN 4 -->
+    <ion-item [hidden]="ocultarOpcion4">
+      <ion-label position="floating"><b>Descripción:</b></ion-label>
+      <ion-textarea minlength="3" maxlength="250" [(ngModel)]="opcion4.descripcion" required></ion-textarea>
+    </ion-item>
+    <span class="caracteres" [hidden]="ocultarOpcion4">{{ 250 - opcion4.descripcion.length }} caracteres restantes</span>
+
+    <ion-row>
+      <ion-col offset="3">
+        <ion-buttons class="botones" (click)="agregarOpcion()">
+          <ion-button shape="round" [disabled]="desactivarBotonAdd">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>  
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons class="botones">
+          <ion-button shape="round" (click)="eliminarOpcion()" [disabled]="desactivarBotonRemove">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-button>  
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+
+  </ion-list>
+
+  <ion-button  color="tertiary" 
+               shape="round" 
+               expand="full"
+               class="sendData"
+               (click)="enviarOpciones()"
+               [disabled]="opcion1.titulo.length < 3 ||
+                           opcion1.descripcion.length < 3 ||
+                           opcion2.titulo.length < 3 ||
+                           opcion2.descripcion.length < 3 ||
+                           (opcion3.titulo.length < 3 && contador > 0)||
+                           (opcion3.descripcion.length < 3 && contador > 0)||
+                           (opcion4.titulo.length < 3 && contador > 1)||
+                           (opcion4.descripcion.length < 3 && contador > 1)">
+    Enviar
+  </ion-button>
+
+
+</ion-content>

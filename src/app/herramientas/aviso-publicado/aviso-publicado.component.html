@@ -1,0 +1,32 @@
+<ion-card class="avisoUnitario"
+[ngClass]="{
+  'redEvent': aviso.tipoAviso === 1, 
+  'yellowEvent': aviso.tipoAviso === 5, 
+  'greenEvent': aviso.tipoAviso === 4,
+  'blueEvent': aviso.tipoAviso === 3
+}"
+>
+  <ion-card-header>
+    <ion-card-subtitle class=" fontColor ion-text-center"><ion-icon name="body"></ion-icon>
+      {{aviso.comunidad.nombreComunidad}}</ion-card-subtitle>
+    <ion-card-title class="ion-text-center"><b>{{aviso.titulo}}</b></ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content class="fontColor ion-text-center">
+    <ion-icon name="document-text-outline"></ion-icon>
+    {{aviso.descripcion}}
+    <img *ngIf="aviso.imagenAviso.length > 0" class="formatoImagen" src="{{aviso.imagenAviso | mostrarImagen: aviso.usuario._id }}" >
+    <ion-row class="ion-text-center">
+      <ion-col style="margin-top:-0.5% ;" >
+        <ion-icon name="calendar-sharp"></ion-icon>
+        {{aviso.fechaCreacion}}
+      </ion-col>
+     <ion-col style="margin-top:-1% ;">
+       {{aviso.usuario.nombre}}
+       <ion-icon name="person"></ion-icon>
+ 
+     </ion-col>
+     
+   </ion-row>
+  </ion-card-content>
+</ion-card>

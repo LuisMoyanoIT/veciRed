@@ -1,0 +1,23 @@
+:host {
+    ion-content {
+        --background: linear-gradient(135deg, #110A3B, #2f32a0);
+        --padding-top: 10px;
+    }
+}
+
+img {
+    width: 60px;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.my-label {
+    font-size: 18px;
+}
+
+ion-item {
+    --padding-top: 40px;
+    --padding-bottom: 10px;
+}

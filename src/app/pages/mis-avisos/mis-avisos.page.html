@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab1" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+    
+
+    <ion-buttons size="large" fill="clear" slot="end" >
+      <ion-button [disabled]="disabledCrear"
+                    (click)="NavegarCrearAviso()"
+                    
+                    
+        >
+        <ion-icon slot="icon-only" name="add-outline" color="light" ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    <!-- <ion-buttons  
+                  (click)="NavegarCrearAviso()"
+                  slot="end">
+      <ion-icon slot="icon-only" name="add-outline">
+
+      </ion-icon>
+
+    </ion-buttons> -->
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--INICIO ION REFRESHER-->
+  <ion-refresher slot="fixed" (ionRefresh)="refresher($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!--FIN ION REFRESHER-->
+  
+  <!--INICIO TITULO-->
+  <ion-grid>
+    <div class="ripple-parent">
+      <ion-row>    
+        <ion-col  class="avisosTitlte ion-text-center">
+          <b>MIS AVISOS</b>
+        </ion-col>
+      </ion-row>     
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-grid>
+  <!--FIN TITULO-->
+
+  <!--Agregamos avisos para mostrar aca los avisos publicados-->
+  <ion-card class="noAvisos"  *ngIf="emptyMisAvisos">
+    <h3 class="noAvisosTitle"><b>Aún no has creado ningún aviso</b></h3>
+    <img class="noAvisosImage"src="/../../assets/sadHouse.png">
+    <h3 class="noAvisosTitle"><b>¡Crea el primero!</b></h3>
+    
+  </ion-card>
+  <!--FIN empty avisos-->
+  <ion-row >
+    
+    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+    *ngFor ="let aviso of misAvisos">
+    <!---COMIENZO DE AVISOS POR USUARIO-->
+    <ion-card  class="avisoUnitario"
+    [ngClass]="{
+      'redEvent': aviso.tipoAviso === 1, 
+      'yellowEvent': aviso.tipoAviso === 5, 
+      'greenEvent': aviso.tipoAviso === 4,
+      'blueEvent': aviso.tipoAviso === 3
+    }"
+    
+    >
+      <ion-card-header>
+        <ion-card-subtitle class=" fontColor ion-text-center">
+          <ion-icon name="body"></ion-icon>
+          {{aviso.comunidad.nombreComunidad}}
+        </ion-card-subtitle>
+        <ion-card-title class="ion-text-center">
+          <b>{{aviso.titulo}}</b>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="fontColor ion-text-center">
+        <ion-icon name="document-text-outline"></ion-icon>
+        {{aviso.descripcion}}
+        <!--IMG-->
+        <img *ngIf="aviso.imagenAviso.length > 0" class="formatoImagen" src="{{aviso.imagenAviso | mostrarImagen: aviso.usuario._id }}" >
+        <!--IMG-->
+        <ion-row class="ion-text-center">
+          <ion-col style="margin-top:-0.5% ;" >
+            <ion-icon name="calendar-sharp"></ion-icon>
+            {{aviso.fechaCreacion}}
+          </ion-col>
+         <ion-col style="margin-top:-1% ;">
+           {{aviso.usuario.nombre}}
+           <ion-icon name="person"></ion-icon>
+     
+         </ion-col>
+         
+       </ion-row>
+       <!--INICIO OPCIONES EDITAR Y ELIMINAR-->
+       <ion-row >
+         <ion-col  style="margin-left: 20%;">
+           <ion-buttons>
+             <ion-button  class="editarAviso"
+                          (click)="editarAviso(aviso)"
+             >
+               
+              <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+             </ion-button>
+           </ion-buttons>
+          
+         </ion-col>
+         <ion-col >
+          <ion-buttons>
+            <ion-button class="eliminarAviso"  
+                        (click)="eliminarAviso(aviso)">
+             <ion-icon  slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+         </ion-col>
+       </ion-row>
+       <!--FIN OPCIONES EDITAR Y ELIMINAR-->
+      </ion-card-content>
+    </ion-card>
+
+    <!---FIN DE AVISOS POR USUARIO-->
+   
+    </ion-col>
+
+    <!--INICIO INFINITE SCROLL-->
+    <ion-infinite-scroll [disabled]="!infiniteScroll"
+                         threshold="100px" 
+                         (ionInfinite)="avisosPorUsuario($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <!--FIN INFINITE SCROLL-->
+  </ion-row>
+</ion-content>

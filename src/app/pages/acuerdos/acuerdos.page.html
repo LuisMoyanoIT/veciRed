@@ -1,0 +1,50 @@
+<!-- <app-cabecera titulo="VeciRed"></app-cabecera> -->
+<ion-header>
+  <ion-toolbar class="cabecera">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/tab1" color="light"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title class="ion-text-center" color="light">VeciRed</ion-title>
+  
+    <ion-buttons slot="end">   
+      <ion-button shape="round" routerLink="/main/tabs/crear-acuerdo">
+        <ion-icon slot="icon-only" name="add-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      
+  </ion-toolbar>
+</ion-header>
+  
+
+
+<ion-content color="light">
+  <!-- Titulo -->
+  <div class="titulo"><h4 class="ion-text-center"><b>ACUERDOS</b></h4></div>
+  
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Acuerdos vacio -->
+  <div class="sinAcuerdos"  *ngIf="emptyAcuerdos">
+    <h3 class="sinAcuerdosTitulo"><b>No hay acuerdos en tu comunidad</b></h3>
+    <img class="sinAcuerdosImagen"src="/../../assets/sadHouse.png">
+    <h3 class="sinAcuerdosTitulo"><b>¡Crea el primero!</b></h3>
+      
+  </div>
+
+  <!-- Acuerdos -->
+  <app-acuerdos-comunidad [acuerdosComunidad] = "acuerdos"></app-acuerdos-comunidad>
+   
+  <!-- Scroll infinito -->
+  <ion-infinite-scroll    [disabled]="deshabilitar"
+                          threshold="100px" 
+                          (ionInfinite)="scroll($event)">
+      <ion-infinite-scroll-content>
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
